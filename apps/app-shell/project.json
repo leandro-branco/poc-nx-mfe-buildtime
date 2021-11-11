@@ -1,0 +1,73 @@
+{
+  "root": "apps/app-shell",
+  "sourceRoot": "apps/app-shell/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/app-shell",
+        "index": "apps/app-shell/src/index.html",
+        "baseHref": "/",
+        "main": "apps/app-shell/src/main.tsx",
+        "polyfills": "apps/app-shell/src/polyfills.ts",
+        "tsConfig": "apps/app-shell/tsconfig.app.json",
+        "assets": [
+          "apps/app-shell/src/favicon.ico",
+          "apps/app-shell/src/assets"
+        ],
+        "styles": ["apps/app-shell/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/app-shell/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/app-shell/src/environments/environment.ts",
+              "with": "apps/app-shell/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "port": 4200,
+        "buildTarget": "app-shell:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "app-shell:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/app-shell/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/app-shell"],
+      "options": {
+        "jestConfig": "apps/app-shell/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

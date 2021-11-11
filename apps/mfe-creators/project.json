@@ -1,0 +1,73 @@
+{
+  "root": "apps/mfe-creators",
+  "sourceRoot": "apps/mfe-creators/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/mfe-creators",
+        "index": "apps/mfe-creators/src/index.html",
+        "baseHref": "/",
+        "main": "apps/mfe-creators/src/main.tsx",
+        "polyfills": "apps/mfe-creators/src/polyfills.ts",
+        "tsConfig": "apps/mfe-creators/tsconfig.app.json",
+        "assets": [
+          "apps/mfe-creators/src/favicon.ico",
+          "apps/mfe-creators/src/assets"
+        ],
+        "styles": ["apps/mfe-creators/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/mfe-creators/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/mfe-creators/src/environments/environment.ts",
+              "with": "apps/mfe-creators/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "port": 4201,
+        "buildTarget": "mfe-creators:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "mfe-creators:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mfe-creators/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/mfe-creators"],
+      "options": {
+        "jestConfig": "apps/mfe-creators/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

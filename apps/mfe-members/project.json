@@ -1,0 +1,73 @@
+{
+  "root": "apps/mfe-members",
+  "sourceRoot": "apps/mfe-members/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/mfe-members",
+        "index": "apps/mfe-members/src/index.html",
+        "baseHref": "/",
+        "main": "apps/mfe-members/src/main.tsx",
+        "polyfills": "apps/mfe-members/src/polyfills.ts",
+        "tsConfig": "apps/mfe-members/tsconfig.app.json",
+        "assets": [
+          "apps/mfe-members/src/favicon.ico",
+          "apps/mfe-members/src/assets"
+        ],
+        "styles": ["apps/mfe-members/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/mfe-members/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/mfe-members/src/environments/environment.ts",
+              "with": "apps/mfe-members/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "port": 4202,
+        "buildTarget": "mfe-members:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "mfe-members:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mfe-members/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/mfe-members"],
+      "options": {
+        "jestConfig": "apps/mfe-members/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
