@@ -20,7 +20,7 @@
         ],
         "styles": ["apps/mfe-creators/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/mfe-creators/webpack.config.js"
+        "webpackConfig": "@nrwl/react/plugins/webpack"
       },
       "configurations": {
         "production": {

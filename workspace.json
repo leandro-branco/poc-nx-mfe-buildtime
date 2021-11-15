@@ -3,6 +3,8 @@
   "projects": {
     "app-shell": "apps/app-shell",
     "common": "libs/common",
+    "lib-creators": "libs/lib-creators",
+    "lib-members": "libs/lib-members",
     "mfe-creators": "apps/mfe-creators",
     "mfe-members": "apps/mfe-members"
   }

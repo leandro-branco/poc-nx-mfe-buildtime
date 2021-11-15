@@ -15,24 +15,16 @@ import { WithAuthorization } from "./components/with-authorization/with-authoriz
 import { Header } from "./components/header/header";
 import { MainLayout } from "./components/main-layout/main-layout";
 
-// @ts-ignore
-const Creators = React.lazy(() => import("creators/App"));
-// @ts-ignore
-// const Creators = React.lazy(() => import("creators/Main"));
-
-
-// @ts-ignore
-// const Members = React.lazy(() => import("creators/App"));
-
+import { Main as Creators } from '@mfe/creators';
+import { Main as Members } from '@mfe/members';
 
 const navigation = [
   { name: 'Home', path: '/', components: null, icon: HomeIcon, current: false },
-  { name: 'Creators', path: '/creators', components: Creators, icon: SparklesIcon, current: false },
-  // { name: 'Members', path: '/members', components: Members, icon: UserGroupIcon, current: true },
+  { name: 'Members', path: '/members', components: Members, icon: SparklesIcon, current: false },
+  { name: 'Creators', path: '/creators', components: Creators, icon: UserGroupIcon, current: false },
 ]
 
 export function App() {
-
 
   return (
     <BrowserRouter>
@@ -47,7 +39,8 @@ export function App() {
               <Suspense fallback={<div>Fallback</div>}>
                 <Switch>
                   <Route exact path="/" render={() => <div>Main</div>} />
-                  {/* <Route exact path="/creators" render={() => <Creators />} /> */}
+                  <Route exact path="/creators" component={Creators} />
+                  <Route exact path="/members" component={Members} />
                 </Switch>
               </Suspense>
             </MainLayout>

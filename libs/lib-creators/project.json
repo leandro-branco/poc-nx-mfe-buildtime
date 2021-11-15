@@ -1,0 +1,23 @@
+{
+  "root": "libs/lib-creators",
+  "sourceRoot": "libs/lib-creators/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/lib-creators/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/lib-creators"],
+      "options": {
+        "jestConfig": "libs/lib-creators/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

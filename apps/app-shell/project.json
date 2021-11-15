@@ -20,7 +20,7 @@
         ],
         "styles": ["apps/app-shell/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/app-shell/webpack.config.js"
+        "webpackConfig": "@nrwl/react/plugins/webpack"
       },
       "configurations": {
         "production": {
